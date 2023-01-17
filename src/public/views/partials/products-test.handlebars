@@ -1,0 +1,26 @@
+<div class="container w-50 p-4 mt-2 bg-secondary">
+<h3 class="mb-3 text-white">Lista de Productos Random</h3>
+<div class="table-responsive">
+<table class="table table-striped text-center">
+  <thead>
+    <tr>
+      <th scope="col">#ID</th>
+      <th scope="col">Nombre</th>
+      <th scope="col">Precio</th>
+      <th scope="col">Foto</th>
+    </tr>
+  </thead>
+  <tbody class="table-light">
+    {{#each productos}}
+    <tr class="align-middle">
+      <th scope="row">{{this.id}}</th>
+      <td>{{this.nombre}}</td>
+      <td>{{this.precio}}</td>
+      <td><img src={{this.foto}} class="img-thumbnail shadow-sm" width="80" height="80" alt={{this.foto}}></td>
+    </tr>
+    {{/each}}
+  </tbody>
+</table>
+</div>
+</div>
+
