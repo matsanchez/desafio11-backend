@@ -23,12 +23,16 @@ app.use(cookieParser());
 app.use(
   session({
     store: new Store({
-      path: "./sessions",
+      path: "./src/sessions",
+      ttl: 60,
     }),
     key: "user_sid",
     secret: "c0d3r",
-    resave: true,
-    saveUninitialized: true,
+    resave: false,
+    saveUninitialized: false,
+    /* cookie: {
+      maxAge: 60000,
+    }, */
   })
 );
 app.engine("handlebars", handlebars.engine());
@@ -36,7 +40,7 @@ app.set("views", "./src/public/views");
 app.set("view engine", "handlebars");
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use("/api/auth", userRoutes);
+app.use("/api/auth/", userRoutes);
 
 const io = new Server(server);
 
