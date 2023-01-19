@@ -1,4 +1,5 @@
 import { deleteProduct, updateProduct, setProduct, setMessage, sendUpdateProduct } from "./socket.js";
+
 const DOMlistProducts = document.getElementById("listProducts");
 const DOMroomChat = document.getElementById("roomChat");
 const DOMinputName = document.getElementById("name");

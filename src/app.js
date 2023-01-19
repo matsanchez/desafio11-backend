@@ -4,7 +4,7 @@ import express from "express";
 import handlebars from "express-handlebars";
 import { Server } from "socket.io";
 import { Manager } from "./controllers/manager.js";
-import userRoutes from "./routes/login.routes.js";
+import userRouter from "./routes/login.routes.js";
 import cookieParser from "cookie-parser";
 import session from "express-session";
 import FileStore from "session-file-store";
@@ -19,6 +19,8 @@ const server = app.listen(PORT, () => {
 });
 
 app.use(express.static("src/public"));
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(
   session({
@@ -30,23 +32,22 @@ app.use(
     secret: "c0d3r",
     resave: false,
     saveUninitialized: false,
-    /* cookie: {
+    cookie: {
       maxAge: 60000,
-    }, */
+    },
   })
 );
 app.engine("handlebars", handlebars.engine());
 app.set("views", "./src/public/views");
 app.set("view engine", "handlebars");
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-app.use("/api/auth/", userRoutes);
+app.use("/api/auth/", userRouter);
 
 const io = new Server(server);
 
 app
   .get("/", auth, async (req, res) => {
-    res.redirect("/api/auth/login");
+    const user_sid = req.session.user;
+    res.render("pages/home", { userLogin: user_sid });
   })
   .get("/api/productos-test", async (req, res) => {
     const productosRandom = await managerProductos.getRandomProducts();

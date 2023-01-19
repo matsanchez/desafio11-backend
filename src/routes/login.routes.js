@@ -1,19 +1,19 @@
 import { Router } from "express";
 import { auth } from "../middleware/middlewares.js";
-const userRoutes = Router();
+const userRouter = Router();
 
-userRoutes
-  .get("/login", auth, (req, res) => {
+userRouter
+  .get("/login", (req, res) => {
     res.render("pages/login");
   })
   .post("/login", (req, res) => {
     req.session.user = req.body;
     res.redirect("/");
   })
-  .get("/logout", (req, res) => {
+  .get("/logout", auth, (req, res) => {
+    res.render("pages/logout", { userLogout: req.session.user });
     req.session.destroy();
     res.clearCookie("user_sid");
-    res.redirect("/");
   });
 
-export default userRoutes;
+export default userRouter;

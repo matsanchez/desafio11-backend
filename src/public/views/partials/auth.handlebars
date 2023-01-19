@@ -1,0 +1,11 @@
+{{#if userLogin}}
+<div class="container w-50 p-4 mt-2 bg-secondary d-flex justify-content-between align-items-center">
+        <h4 class="text-center text-light">Hi!! Bienvenido {{userLogin.nombre}}</h4>
+        <button class="btn btn-warning"><a class="text-decoration-none" href="/api/auth/logout" id="btnLogOut">Logout</a></button>
+</div>
+{{/if}}
+{{#if userLogout}}
+<div class="container w-50 p-4 mt-2 bg-secondary d-flex justify-content-between align-items-center">
+        <h4 class="text-center text-light">Vuelve pronto! Hasta luego {{userLogout.nombre}}</h4>
+</div>
+{{/if}}

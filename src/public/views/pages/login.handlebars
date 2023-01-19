@@ -1,1 +1,13 @@
-{{>formLogin}}
+<div class="container w-50 mt-2 p-4 bg-secondary">
+    <h3 class="mb-3 text-white text-center">Login</h3>
+    <div class="d-flex flex-column">
+        <div>
+            <form action="/api/auth/login" method="POST" >
+                <div class="form-group ">
+                <input type="nombre" name="nombre" placeholder="Ingres su nombre" class="form-control mt-1" required/>
+                </div>
+                <button type="submit" class="btn btn-warning mt-2 container">Ingresar</button>
+            </form>
+        </div>
+    </div>
+</div>
