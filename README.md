@@ -15,11 +15,13 @@ Para ejecutar el proyecto, el mismo puede descargarse como .zip o git clone
 npm install
 ```
 
-> Modos de ejecucion Local:
+> Poner a escuchar MySql:
 
 ```
-El proyecto se ejecuta en http://localhost:8080
+Usando XAMPP Control Panel o el que utilices
 ```
+
+> Modos de ejecucion Local:
 
 ```
 npm run start (modo produccion) Node JS
@@ -27,11 +29,12 @@ npm run start (modo produccion) Node JS
 npm run dev (modo developer) Nodemon
 ```
 
-> Ruta del desafio
-
 ```
-http://localhost:8080/api/productos-test
-
+Ingresas en el navegador http://localhost:8080
 ```
+
+> Creacion Base de Datos:
+
+`Si ya esta MySql a la escucha, simplemente ejecutas la aplicacion con los comandos "npm run dev" o "npm run start" y en el navegador ingresar a http://localhost:8080 y automaticamente se creara la base de datos en Mysql local bajo el nombre websocket_mariadb y se generara el archivo de la base de datos de Sqlite con el nombre "ecommerce" dentro de la carpeta DB del proyecto.`
 
 Autor: Matias Sanchez

@@ -1,5 +1,5 @@
 import { configMysql, configSqlite } from "./options/db.config.js";
-import { auth } from "./middleware/middlewares.js";
+import { auth, createDBLocal, createTableMysql, createTableSqlite } from "./middleware/middlewares.js";
 import express from "express";
 import handlebars from "express-handlebars";
 import { Server } from "socket.io";
@@ -45,7 +45,7 @@ app.use("/api/auth/", userRouter);
 const io = new Server(server);
 
 app
-  .get("/", auth, async (req, res) => {
+  .get("/", auth, createDBLocal, createTableMysql, createTableSqlite, async (req, res) => {
     const user_sid = req.session.user;
     res.render("pages/home", { userLogin: user_sid });
   })
